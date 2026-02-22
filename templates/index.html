@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Credit Card Fraud Detection</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+<div class="container">
+    <h2>Credit Card Fraud Detection</h2>
+
+    <form action="/predict" method="post">
+
+        <input type="text" name="Time" placeholder="Time" required>
+
+        {% for i in range(1,29) %}
+            <input type="text" name="V{{i}}" placeholder="V{{i}}" required>
+        {% endfor %}
+
+        <input type="text" name="Amount" placeholder="Amount" required>
+
+        <button type="submit">Predict</button>
+    </form>
+
+    <div class="result">
+        {{ prediction_text }}
+    </div>
+</div>
+
+</body>
+</html>
